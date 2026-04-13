@@ -7,35 +7,35 @@ pipeline {
           steps {
             echo "Parallel 1 job"
             sleep 6
-            sh "echo \"Job 1 done\" >> file1.txt"
+            sh "echo \"Job 1 done\" >> artifacts/file1.txt"
           }
         }
         stage("Par2") {
           steps {
             echo "Parallel 2 job"
             sleep 5
-            sh "echo \"Job 2 done\" >> file2.txt"
+            sh "echo \"Job 2 done\" >> artifacts/file2.txt"
           }
         }
         stage("Par3") {
           steps {
             echo "Parallel 3 job"
             sleep 2
-            sh "echo \"Job 3 done\" >> file3.txt"
+            sh "echo \"Job 3 done\" >> artifacts/file3.txt"
           }
         }
         stage("Par4") {
           steps {
             echo "Parallel 4 job"
             sleep 3
-            sh "echo \"Job 4 done\" >> file4.txt"
+            sh "echo \"Job 4 done\" >> artifacts/file4.txt"
           }
         }
         stage("Par5") {
           steps {
             echo "Parallel 5 job"
             sleep 4
-            sh "echo \"Job 5 done\" >> file5.txt"
+            sh "echo \"Job 5 done\" >> artifacts/file5.txt"
           }
         }
       }

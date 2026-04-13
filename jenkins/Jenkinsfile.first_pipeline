@@ -1,11 +1,20 @@
 pipeline {
     agent any
+    parameters {
+      string(name: 'GREETING', defaultValue: 'Hello',  description: "How to say hi")
+      choice(name: 'ENVIRONMENT', choices: ['Dev', 'Staging', 'Prod'], description: "Select target env")
+      booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Check to run unit')
+    }
     stages {
         stage('Hello') {
             steps {
                 echo 'This is the first step of the pipeline which is being distributed'
                 echo "Show me what files we have here"
                 sh "ls -al"
+                echo "We have the following parameters set"
+                echo "GREETING: ${params.GREETING}"
+                echo "ENVIRONMENT: ${params.ENVIRONMENT}"
+                echo "RUN_TESTS: ${params.RUN_TESTS}"
             }
         }
         stage('Second Step') {
@@ -17,7 +26,13 @@ pipeline {
         stage('Third Step') {
             steps {
                 echo 'finised with it'
+                sh "ls -al"
             }
         }
+    }
+    post {
+      always {
+        archiveArtifacts artifacts: 'artifacts/*.txt', fingerprint: true
+      }
     }
 }
