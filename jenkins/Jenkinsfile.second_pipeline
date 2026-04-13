@@ -1,6 +1,6 @@
 pipeline {
     agent {
-      customWorkspace "${params.MASTER_WS}"
+      customWorkspace: "${params.MASTER_WS}"
     }
     stages {
       stage("Where are we??") {
