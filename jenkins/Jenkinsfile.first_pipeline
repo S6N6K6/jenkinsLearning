@@ -26,7 +26,8 @@ pipeline {
         stage('Second Step') {
             steps {
                 echo 'Starting the second stage of the pipeline'
-                build job: 'pipeline1', parameters: [
+                build job: 'pipeline1', 
+                parameters: [
                   string(name:"MASTER_WS", value: "${env.WORKSPACE}"
                 ]
             }
