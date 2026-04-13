@@ -2,7 +2,7 @@ pipeline {
     agent {
       node {
         label "main-node"
-        customWorkspace "${params.PARENT_WORKSPACE}"
+        customWorkspace "${params.PARENT_WS}"
       }
     }
     stages {
@@ -10,6 +10,8 @@ pipeline {
         steps {
           echo "Where are we????"
           sh "pwd"
+          echo "What is the Workspace"
+          echo "WS: ${params.PARENT_WS}  vs ${env.WORKSPACE}"
         }
       }
       stage ("Parallel run") {

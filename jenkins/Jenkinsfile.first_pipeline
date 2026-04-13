@@ -30,9 +30,10 @@ pipeline {
         stage('Second Step') {
             steps {
                 echo 'Starting the second stage of the pipeline'
+                echo "workspace: ${env.WORKSPACE}"
                 build job: 'pipeline1', 
                 parameters: [
-                  string(name:"MASTER_WS", value: "${env.WORKSPACE}")
+                  string(name:"PARENT_WS", value: "${env.WORKSPACE}")
                 ]
             }
         }
