@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
+              script{
                 echo 'This is the first step of the pipeline which is being distributed'
                 echo "Show me what files we have here"
                 sh "ls -al"
@@ -16,8 +17,8 @@ pipeline {
                 echo "ENVIRONMENT: ${params.ENVIRONMENT}"
                 echo "RUN_TESTS: ${params.RUN_TESTS}"
                 echo "Create artifacts space"
-                sh "mkdir artifacts"
-            }
+                sh "mkdir -p artifacts"
+              }
         }
         stage('Second Step') {
             steps {
