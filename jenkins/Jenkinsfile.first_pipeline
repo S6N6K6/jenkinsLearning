@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+      node {
+        label "same-node-as-master"
+      }
+    }
     parameters {
       string(name: 'GREETING', defaultValue: 'Hello',  description: "How to say hi")
       choice(name: 'ENVIRONMENT', choices: ['Dev', 'Staging', 'Prod'], description: "Select target env")
