@@ -2,7 +2,7 @@ pipeline {
     agent {
       node {
         label "main-node"
-        customWorkspace "${params.MASTER_WS}"
+        customWorkspace "${params.PARENT_WORKSPACE}"
       }
     }
     stages {
