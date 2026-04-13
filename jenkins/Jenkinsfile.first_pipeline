@@ -12,6 +12,8 @@ pipeline {
                 echo 'This is the first step of the pipeline which is being distributed'
                 echo "Show me what files we have here"
                 sh "ls -al"
+                echo "Here we are:"
+                sh "pwd"
                 echo "We have the following parameters set"
                 echo "GREETING: ${params.GREETING}"
                 echo "ENVIRONMENT: ${params.ENVIRONMENT}"
@@ -24,7 +26,9 @@ pipeline {
         stage('Second Step') {
             steps {
                 echo 'Starting the second stage of the pipeline'
-                build job: 'pipeline1'
+                build job: 'pipeline1', parameters: [
+                  string(name:"MASTER_WS", value: "${env.WORKSPACE}"
+                ]
             }
         }
         stage('Third Step') {

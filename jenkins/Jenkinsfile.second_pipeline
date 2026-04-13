@@ -1,6 +1,14 @@
 pipeline {
-    agent any
+    agent {
+      customworkspace "${params.MASTER_WS}"
+    }
     stages {
+      stage("Where are we??") {
+        steps {
+          echo "Where are we????"
+          sh "pwd"
+        }
+      }
       stage ("Parallel run") {
       parallel {
         stage("Par1") {
