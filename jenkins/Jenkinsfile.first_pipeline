@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    parameters {
+      string defaultValue: "calin", description: "Who is running this???", name='PERSON', trim: true
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'This is the first step of the pipeline which is being distributed'
+                echo "Show me what files we have here"
+                sh "ls -al"
+            }
+        }
+        stage('Second Step') {
+            steps {
+                echo 'Starting the second stage of the pipeline'
+                build job: 'pipeline1'
+            }
+        }
+        stage('Third Step') {
+            steps {
+                echo 'finised with it'
+            }
+        }
+    }
+}
