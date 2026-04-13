@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    parameters {
-      string defaultValue: "calin", description: "Who is running this???", name='PERSON', trim: true
-    }
     stages {
         stage('Hello') {
             steps {
