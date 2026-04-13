@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-      node {
-        label "main-node"
-      }
-    }
+    agent any
     parameters {
       string(name: 'GREETING', defaultValue: 'Hello',  description: "How to say hi")
       choice(name: 'ENVIRONMENT', choices: ['Dev', 'Staging', 'Prod'], description: "Select target env")
@@ -32,15 +28,6 @@ pipeline {
                 echo 'Starting the second stage of the pipeline'
                 echo "workspace: ${env.WORKSPACE}"
                 build job: 'pipeline1', 
-                parameters: [
-                  string(name:"PARENT_WS", value: "${env.WORKSPACE}")
-                ]
-            }
-        }
-        stage('Third Step') {
-            steps {
-                echo 'finised with it'
-                sh "ls -al"
             }
         }
     }

@@ -1,17 +1,11 @@
 pipeline {
-    agent {
-      node {
-        label "main-node"
-        customWorkspace "${params.PARENT_WS}"
-      }
-    }
+    agent any
     stages {
       stage("Where are we??") {
         steps {
           echo "Where are we????"
           sh "pwd"
-          echo "What is the Workspace"
-          echo "WS: ${params.PARENT_WS}  vs ${env.WORKSPACE}"
+          sh "mkdir -p artifacts"
         }
       }
       stage ("Parallel run") {
@@ -54,5 +48,11 @@ pipeline {
         }
       }
     }
+     stage('Third Step') {
+         steps {
+             echo 'finised with it'
+             sh "ls -al"
+         }
+     }
     }
 }
