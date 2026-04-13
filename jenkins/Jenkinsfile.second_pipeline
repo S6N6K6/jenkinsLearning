@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+      stage ("Parallel run") {
       parallel {
         stage("Par1") {
           steps {
@@ -38,5 +39,6 @@ pipeline {
           }
         }
       }
+    }
     }
 }
