@@ -6,8 +6,9 @@ pipeline {
         stage("Par1") {
           steps {
             echo "Parallel 1 job"
+            sh "ls al"
             sleep 6
-            sh "echo \"Job 1 done\" >> artifacts/file1.txt"
+            sh "echo Job 1 done >> artifacts/file1.txt"
           }
         }
         stage("Par2") {
