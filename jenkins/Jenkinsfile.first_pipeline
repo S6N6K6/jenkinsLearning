@@ -1,7 +1,7 @@
 pipeline {
     agent {
       node {
-        label "same-node-as-master"
+        label "main-node"
       }
     }
     parameters {
