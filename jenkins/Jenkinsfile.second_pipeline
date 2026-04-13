@@ -1,6 +1,9 @@
 pipeline {
     agent {
-      customWorkspace: "${params.MASTER_WS}"
+      node {
+        label "same-node-as-master"
+        customWorkspace "${params.MASTER_WS}"
+      }
     }
     stages {
       stage("Where are we??") {
