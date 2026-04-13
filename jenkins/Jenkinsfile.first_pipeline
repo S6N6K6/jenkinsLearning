@@ -19,6 +19,7 @@ pipeline {
                 echo "Create artifacts space"
                 sh "mkdir -p artifacts"
               }
+          }
         }
         stage('Second Step') {
             steps {
@@ -38,5 +39,4 @@ pipeline {
         archiveArtifacts artifacts: 'artifacts/*.txt', fingerprint: true
       }
     }
-}
 }
