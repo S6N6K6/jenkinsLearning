@@ -27,13 +27,8 @@ pipeline {
             steps {
                 echo 'Starting the second stage of the pipeline'
                 echo "workspace: ${env.WORKSPACE}"
-                build job: 'pipeline1', 
+                build job: 'pipeline1' 
             }
         }
-    }
-    post {
-      always {
-        archiveArtifacts artifacts: 'artifacts/*.txt', fingerprint: true
-      }
     }
 }
